@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+<div>hello</div>
+<ul>
+<!--    循环数据-->
+    <li th:each="book: ${bookList}">
+<!--        单条数据-->
+        <a th:href="@{ 'detail?id=' + ${book.id} }" th:text="${book.name}"></a>
+    </li>
+</ul>
+</body>
+</html>
