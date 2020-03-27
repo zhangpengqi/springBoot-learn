@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+    <ul>
+        <div>文章列表 </div>
+        <li th:each="article:${articleList}">
+            <a th:href="@{'detail?id='+${article.id}}" th:text="${article.title}"></a>
+        </li>
+    </ul>
+</body>
+</html>

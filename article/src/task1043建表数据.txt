@@ -1,0 +1,12 @@
+CREATE TABLE `article`(
+    `id` int (11) NOT NULL AUTO_INCREMENT,
+    `username` varchar(50) NOT NULL DEFAULT '' COMMENT '账号',
+    `title` varchar(50) NOT NULL DEFAULT '' COMMENT '标题',
+    `content` varchar(140) NOT NULL DEFAULT '' COMMENT '文章内容',
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO article (username,title,content) values
+("刘备","称王","四川建国"), 
+("曹操","杀人","开颅手术不做，气的杀人"), 
+("赵云","大牛逼","千里走单骑"); 

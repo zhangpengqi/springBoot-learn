@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+</head>
+<body>
+    <div>文章详情</div>
+    <div>文章id:<span th:text="${article.id}"></span></div>
+    <div>作者:<span th:text="${article.username}"></span></div>
+    <div>标题:<span th:text="${article.title}"></span></div>
+    <div>内容:<span th:text="${article.content}"></span></div>
+</body>
+</html>
