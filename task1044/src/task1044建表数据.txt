@@ -1,0 +1,15 @@
+CREATE TABLE `book`(
+    `id` int (11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(50) NOT NULL DEFAULT '' COMMENT '书名',
+    `describe` varchar(100) NOT NULL DEFAULT '' COMMENT '描述信息',
+    `created_at` TIMESTAMP NOT NULL DEFAULT  CURRENT_TIMESTAMP COMMENT '新增时间',
+    PRIMARY KEY (`id`)
+)ENGINE=InnoDB AUTO_INCREMENT 2020020001 DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO book (name,`describe`) values
+
+('万历十五年','明万历十五年，即公元1587年，在中国历史上原本是极其普通的年份.'),
+("写在人生边上","不推荐这本书。钱钟书名气很大，围城写的也很好。但是并不是说他就没有写过烂书，这本就是."),
+("巴黎的忧郁","做个有用的人，我一直觉得这很可恶。 --波德莱尔"),
+("帝国：俄罗斯五十年","《帝国》是卡普钦斯基横越俄罗斯的私人报告，为读者全方位、多视角地解析了俄罗斯的过去"),
+("毛泽东选集","国民党怎么样？看它的过去，就可以知道它的现在；看它的过去和现在，就可以知道它的将来.");
