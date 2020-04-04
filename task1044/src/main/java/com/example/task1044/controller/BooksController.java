@@ -14,7 +14,7 @@ import java.util.Date;
 
 @RestController
 @CrossOrigin
-public class BookController {
+public class BooksController {
     @Autowired
     BookMapper bookMapper;
 

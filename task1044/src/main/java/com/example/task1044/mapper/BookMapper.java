@@ -28,6 +28,11 @@ public interface BookMapper {
     @Delete("DELETE  FROM book WHERE id=#{id}")
     int deleteBookById(@Param("id") int id);
 
+    /**
+     * 给定条件图书的数量
+     * @param book 查询图书的条件
+     * @return 符合条件的图书数量
+     */
     @Select("<script>"+
             "SELECT COUNT(*) FROM book"+
             "<where>"+
@@ -37,6 +42,12 @@ public interface BookMapper {
             "</script>")
     int count(@Param("book") Book book);
 
+    /**
+     *  查询图书列表
+     * @param book 查询图书的信息
+     * @param pagination 分页信息
+     * @return 图书列表
+     */
     @Select("<script>"+
             "SELECT * FROM book"+
             "<where>"+
@@ -48,7 +59,12 @@ public interface BookMapper {
     )
     List<Book> selectBooks(@Param("book") Book book, @Param("pagination") Pagination pagination);
 
+    /**
+     * 更新图书
+     * @param bookId 跟新图书的id
+     * @param bookRequest 跟新图书的具体信息
+     * @return 更新图书的条数，没有更新返回0
+     */
     @Update("UPDATE book SET name=#{bookRequest.name},`describe`=#{bookRequest.describe} WHERE id=#{bookId}")
     int updateBooks(int bookId, @Param("bookRequest")BookRequest bookRequest);
-
 }

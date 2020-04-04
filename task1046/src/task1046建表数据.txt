@@ -1,0 +1,15 @@
+CREATE TABLE `user`(
+    `id` int (11) NOT NULL AUTO_INCREMENT,
+    `nickname` varchar(50) NOT NULL COMMENT '昵称',
+    `mobile` varchar(12) NOT NULL COMMENT '手机号',
+    `password` varchar(12) NOT NULL COMMENT '密码',
+    `avatar_url` varchar(50) NOT NULL DEFAULT 'http://jizhang-api-dev.it266.com/images/avatar.png' COMMENT '头像地址',
+    UNIQUE (`nickname`),
+    PRIMARY KEY (`id`)
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `token`(
+    `id` int (11) NOT NULL COMMENT '用户id',
+    `token` varchar(33) NOT NULL,
+    PRIMARY KEY (`id`)
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;
