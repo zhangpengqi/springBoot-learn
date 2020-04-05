@@ -32,12 +32,14 @@ public class CodeUtil {
      * @param request
      * @return
      */
-    public static boolean checkVerifyCode(HttpServletRequest request) {
+    public static boolean checkVerifyCodeAndKey(HttpServletRequest request) {
         //获取生成的验证码
         String verifyCodeExpected = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
+        //获取生成的key
         String verifyKeyExpected  = (String) request.getSession().getAttribute("key");
         //获取用户输入的验证码
         String captchaCode = CodeUtil.getString(request, "captcha_code");
+        //获取用户输入的ke
         String captchaKey = CodeUtil.getString(request, "captcha_key");
         if(captchaCode == null ||!captchaCode.equals(verifyCodeExpected)) {
             return false;

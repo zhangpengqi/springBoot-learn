@@ -59,10 +59,10 @@ public class ApiController {
             response.setHeader("Pragma", "no-cache");
             response.setContentType("image/jpeg");
             //生成验证码
-            String capText = captchaProducer.createText();
-            session.setAttribute(KAPTCHA_SESSION_KEY, capText);
+            String capthcaCode = captchaProducer.createText();
+            session.setAttribute(KAPTCHA_SESSION_KEY, capthcaCode);
             //向客户端写出
-            BufferedImage bi = captchaProducer.createImage(capText);
+            BufferedImage bi = captchaProducer.createImage(capthcaCode);
             ServletOutputStream out = response.getOutputStream();
             ImageIO.write(bi, "jpg", out);
             try {
@@ -85,15 +85,15 @@ public class ApiController {
     @PostMapping("/api/sms")
     public JsonResult sms(HttpServletRequest request) {
         //验证码无效
-        if (!CodeUtil.checkVerifyCode(request)) {
+        if (!CodeUtil.checkVerifyCodeAndKey(request)) {
             return new JsonResult<String>("INVALID_CAPTCHA","验证码⽆效",null);
         } else {
             //验证码有效，生成短信验证码
-            String phoneMessage = CodeUtil.getKey(6);
+            String sms = CodeUtil.getKey(6);
             HttpSession session=request.getSession();
             //生成的短信验证码和注册的手机号，一起存入服务器session中
-            session.setAttribute(request.getParameter("mobile"),phoneMessage);
-            return new JsonResult<String>("SUCCESS","发送成功[本次发送内容:"+phoneMessage+"。正式上线后没有此括号中的内容]",null);
+            session.setAttribute(request.getParameter("mobile"),sms);
+            return new JsonResult<String>("SUCCESS","发送成功[本次发送内容:"+sms+"。正式上线后没有此括号中的内容]",null);
         }
     }
 }

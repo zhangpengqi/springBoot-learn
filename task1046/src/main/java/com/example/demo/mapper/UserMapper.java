@@ -21,7 +21,7 @@ public interface UserMapper {
      * @return user信息
      */
     @Select("SELECT * FROM user WHERE id=#{id}")
-    User selectUserById(int id);
+    User selectUserById(@Param("id") int id);
 
     /**
      * 注册用户

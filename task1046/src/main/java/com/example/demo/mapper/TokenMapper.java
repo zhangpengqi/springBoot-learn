@@ -5,6 +5,7 @@ import com.example.demo.entity.Token;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 public interface TokenMapper {
     /**
@@ -24,4 +25,11 @@ public interface TokenMapper {
     void insertToken(@Param("token") Token token);
 
 
+    /**
+     * 更新token值
+     * @param token id和token值
+     * @return 更新行数
+     */
+    @Update("UPDATE token SET token=#{token.token} WHERE id=#{token.id}")
+    int updateToken(@Param("token") Token token);
 }
