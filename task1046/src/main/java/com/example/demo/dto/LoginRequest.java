@@ -13,8 +13,8 @@ public class LoginRequest {
     private String mobile;
     @NotBlank(message = "密码不能为空")
     private String password;
-    @NotBlank(message = "key值不能为空")
+    @NotBlank(message = "captcha_key不能为空")
     private String captcha_key;
-    @NotBlank(message = "验证码不能为空")
+    @NotBlank(message = "captcha_code不能为空")
     private String captcha_code;
 }

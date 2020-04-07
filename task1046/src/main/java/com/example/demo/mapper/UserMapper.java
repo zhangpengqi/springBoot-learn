@@ -10,18 +10,18 @@ public interface UserMapper {
 
     /**
      * 根据nickname查找用户是否存在
-     * @param nickname 用户昵称
+     * @param mobile 手机号
      * @return 用户信息，不存在返回null
      */
-    @Select("SELECT * FROM user WHERE nickname=#{nickname}")
-    User selectUserByNickname(@Param("nickname") String nickname);
+    @Select("SELECT * FROM user WHERE mobile=#{mobile}")
+    User selectUserByMobile(String mobile);
 
     /**
      * 根据id查user
      * @return user信息
      */
     @Select("SELECT * FROM user WHERE id=#{id}")
-    User selectUserById(@Param("id") int id);
+    User selectUserById(int id);
 
     /**
      * 注册用户

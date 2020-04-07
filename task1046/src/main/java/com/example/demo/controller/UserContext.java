@@ -3,11 +3,12 @@ package com.example.demo.controller;
 import com.example.demo.entity.User;
 
 public class UserContext {
-    private static User currentUser;
+    private static final ThreadLocal<User> currentUser=new ThreadLocal<>();
+
     public static void setUser(User user){
-        currentUser=user;
+        currentUser.set(user);
     }
     public static User getUser(){
-        return currentUser;
+        return currentUser.get();
     }
 }

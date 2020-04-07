@@ -1,9 +1,7 @@
 package com.example.demo.mapper;
 
-
 import com.example.demo.entity.Token;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -14,15 +12,15 @@ public interface TokenMapper {
      * @return 用户id，不存在返回0
      */
     @Select("SELECT * FROM token WHERE token=#{token}")
-    Token selectByToken(@Param("token") String token);
+    Token selectByToken(String token);
 
 
     /**
      * 向token表，插入token
      * @param token
      */
-    @Insert("INSERT INTO token (id,token) values (#{token.id},#{token.token}) ")
-    void insertToken(@Param("token") Token token);
+    @Insert("INSERT INTO token (id,token) values (#{id},#{token}) ")
+    void insertToken( Token token);
 
 
     /**
@@ -30,6 +28,6 @@ public interface TokenMapper {
      * @param token id和token值
      * @return 更新行数
      */
-    @Update("UPDATE token SET token=#{token.token} WHERE id=#{token.id}")
-    int updateToken(@Param("token") Token token);
+    @Update("UPDATE token SET token=#{token} WHERE id=#{id}")
+    int updateToken(Token token);
 }

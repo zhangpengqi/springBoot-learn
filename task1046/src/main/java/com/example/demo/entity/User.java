@@ -18,4 +18,10 @@ public class User {
     private String nickName;
     private String password;
     private String avatarUrl;
+
+    public User(String mobile, String nickName, String avatarUrl) {
+        this.mobile = mobile;
+        this.nickName = nickName;
+        this.avatarUrl = avatarUrl;
+    }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+    <!--
+    以下属性是必须的：
+    name cache的标识符，在⼀个CacheManager中必须唯⼀
+    maxElementsInMemory 在内存中缓存的element的最⼤数⽬
+    maxElementsOnDisk 在磁盘上缓存的element的最⼤数⽬
+    eternal 设置元素（缓存中对象）是否永久驻留
+    overflowToDisk 设定当内存缓存溢出的时候是否将过期的element缓存到磁盘上
+    以下属性是可选的：
+    timeToIdleSeconds - 缓存element在过期前的空闲时间。默认为0，表示可空闲⽆限时间.
+    (如果指定了这个时间，是否在被hit的前超过了这个时间就会被remove,在内存缓存数⽬超限之前不会被
+    remove)
+    timeToLiveSeconds - 缓存element的有效⽣命期。这个类似于timeouts，默认为0，不
+    过期(通常情况下应该⼤于等于timeToIdleSeconds)
+    diskPersistent - 在VM重启的时候是否持久化磁盘缓存，默认是false
+    diskExpiryThreadIntervalSeconds - 磁盘缓存的清理线程运⾏间隔，默认是120秒
+    memoryStoreEvictionPolicy - 当内存缓存达到最⼤，有新的element加⼊的时候，移除
+    缓存中element的策略。默认是LRU，可选的有LFU和FIFO。
+    -->
+    <cache name="captcha"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToIdleSeconds="600"
+           timeToLiveSeconds="600"
+           overflowToDisk="false"
+           memoryStoreEvictionPolicy="LRU"/>
+</ehcache>

@@ -24,27 +24,23 @@ public class TokenInterceptor implements HandlerInterceptor {
     UserMapper userMapper;
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String inputToken= request.getParameter("token");
-        System.out.println(inputToken);
 
-        if(inputToken!=null){
-            Token token = tokenMapper.selectByToken(inputToken);
-            if(token!=null){
-                //查user
-                System.out.println("token");
-                System.out.println(token);
-                User user=userMapper.selectUserById(token.getId());
-                if(user!=null){
-                    UserContext.setUser(user);
-                    System.out.println(user);
-                }else {
-                    throw new RuntimeException("token无效");
-                }
-            }else {
-                throw new RuntimeException("token无效");
-            }
-        }else {
+        if(inputToken==null){
             throw new RuntimeException("token不能为null");
         }
+        //用token查id
+        Token token = tokenMapper.selectByToken(inputToken);
+        if(token==null){
+            throw new RuntimeException("token无效");
+        }
+        //用id查user
+        User user=userMapper.selectUserById(token.getId());
+
+        if(user==null){
+            throw new RuntimeException("token无效");
+        }
+        UserContext.setUser(user);
+
         return true;
     }
 }
